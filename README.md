@@ -4,6 +4,9 @@
 
 Electron + 原生前端，Windows 优先（macOS / Linux 的目录联接已做兼容，但未充分测试）。
 
+> **找不到怎么用？** 看 [使用说明](docs/使用说明.md) —— 面向使用者的完整操作指南。
+> 安装包在 [Releases](https://github.com/lilulj/ai-skill-manager/releases)。
+
 ---
 
 ## 它能做什么
