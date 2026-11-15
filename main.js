@@ -1895,7 +1895,8 @@ function createWindow() {
   });
 
   if (process.argv.includes('--shot')) {
-    const shotDir = app.isPackaged ? app.getPath('userData') : __dirname;
+    const shotDir = app.isPackaged ? app.getPath('userData') : path.join(__dirname, 'shots');
+    ensureDir(shotDir);
     mainWindow.webContents.on('did-finish-load', async () => {
       await new Promise((r) => setTimeout(r, 5000));
       try {

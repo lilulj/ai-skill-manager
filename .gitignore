@@ -4,6 +4,7 @@ build/
 out/
 
 # 开发截图
+shots/
 shot-*.png
 icon-1024.png
 
