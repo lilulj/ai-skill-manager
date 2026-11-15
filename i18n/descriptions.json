@@ -1,0 +1,202 @@
+{
+  "ai-avatar-video": {
+    "zh": "通过 runcomfy CLI 生成数字人、口播和对口型视频。自动在 OmniHuman、Wan 2-7、HappyHorse、Seedance v2 Pro 之间路由，按意图（UGC 配音、虚拟主播、产品讲解、对口型角色、对话场景）选模型，并附各模型的提示词写法与最短调用命令。",
+    "en": "Create AI avatar, talking-head and lip-sync videos on RunComfy via the `runcomfy` CLI. Routes across ByteDance OmniHuman (audio-driven full-body avatar), Wan-AI Wan 2-7 (audio-driven mouth sync via `audio_url` on a portrait), HappyHorse 1.0 (Arena #1 t2v / i2v with in-pass audio) and Seedance v2 Pro (multi-modal cinematic with reference audio + reference subject). Picks the right model for the user's intent — UGC voiceover, virtual presenter, dubbed product demo, lip-synced character, dialog scene — and ships each model's prompting patterns plus the minimal `runcomfy run` invoke.",
+    "srcHash": "d7d550bd58f0"
+  },
+  "ai-image-generation": {
+    "zh": "通过 runcomfy CLI 生成和编辑图片。智能路由 FLUX 2 全家、Nano Banana、GPT Image 2、Seedream 5、Qwen Image、Z-Image Turbo 等模型，按意图（文字精准、写实人像、极速迭代、多参考品牌一致性、开源权重）自动选型，覆盖文生图与图生图、编辑。",
+    "en": "Generate and edit images on RunComfy via the `runcomfy` CLI — a smart router across the full image catalog: FLUX 2 (Klein 9B/4B, Pro, Dev, Flash, Turbo, Max), Google Nano Banana 2 / Pro, OpenAI GPT Image 2, ByteDance Seedream 5 / 4-5 / 4-0 and Dreamina 4-0, Alibaba Qwen Image and Z-Image Turbo, Wan 2-7. Covers text-to-image and image-to-image / edit endpoints, picking the right model per intent (typography precision, photoreal portraits, sub-second iteration, multi-reference brand styling, open-weights workflow).",
+    "srcHash": "f8e715cd7937"
+  },
+  "ai-video-generation": {
+    "zh": "通过 inference.sh CLI 调用 40+ 视频模型出片。含 Veo 3.1、Seedance 2.0、HappyHorse、Wan 2.5、Grok、OmniHuman 等。能力：文生视频、图生视频、参考生视频、视频编辑、对口型、数字人、超分、音效。适用于社媒视频、营销内容、讲解片、产品演示、AI 数字人。",
+    "en": "Generate AI videos with Google Veo, Seedance 2.0, HappyHorse, Wan, Grok and 40+ models via the inference.sh CLI. Capabilities: text-to-video, image-to-video, reference-to-video, video editing, lipsync, avatar animation, video upscaling, foley sound. Use for social media videos, marketing content, explainer videos, product demos and AI avatars.",
+    "srcHash": "3e726a4df199"
+  },
+  "ai-visual-prompt-workflow": {
+    "zh": "用自带的中文提示词库（references/）做图片/视频/音频反推、角色与服装设计、构图光线与运镜选词，以及图像与视频生成提示词。当请求提到反推、眼睛语言库、角色设计库、服装提案板、构图光线库、运镜库，或 TVC 素材时使用。",
+    "en": "Uses a built-in Chinese prompt library (references/) for image / video / audio reverse-engineering, character and costume design, composition-light and camera-move word selection, plus image and video generation prompts. Use when asked about reverse-engineering, the eye-language library, character design library, costume proposal boards, composition-light library, camera-move library or TVC assets.",
+    "srcHash": "0cb580dfb5d8"
+  },
+  "animation-performance": {
+    "zh": "让网页动画控制在帧预算内：只动画合成层属性、页面繁忙时把动效移出主线程、动画掉帧时定位原因。适用于动画卡顿、挑选要动画的属性、决定用 CSS 还是 JS 动画，或准备用 will-change / GPU 图层时。",
+    "en": "Keep web animations inside the frame budget — animate composite-only properties, keep motion off the main thread when the page is busy, and find the cause when an animation drops frames. Use when an animation is janky, choppy or drops frames; when choosing which property to animate; when deciding between CSS and JS animation; or when reaching for will-change or GPU layers.",
+    "srcHash": "e264ddc4bb13"
+  },
+  "anti-ui-slop": {
+    "zh": "阻止 AI 输出千篇一律的界面。用 UIZZE 的 80 万+ 真实网页与 iOS 截图做产品化界面、定义设计契约、覆盖必要状态，并跑一轮严格的完工检查。适用于设计、实现、重构、评审、上线前检查 web 或 iOS 界面。",
+    "en": "Stop coding agents from shipping generic UI. Uses UIZZE's 800,000+ real web and iOS screens to build product-specific interfaces, define a design contract, cover required states, and run a hard finish gate. Use when designing, implementing, redesigning, critiquing or pre-ship reviewing a web or iOS interface.",
+    "srcHash": "dd0b8b999ce2"
+  },
+  "break-ui": {
+    "zh": "用最坏数据去压界面：超长名字、不能断行的邮箱、单字母名字、缺失字段、巨大数字、0 条数据、长标签、非拉丁文字、emoji、极端数值。然后把结果放在「演示数据 / 最坏情况」开关后面渲染，并逐条报告哪里崩了、怎么修。适用于对组件或页面做压力测试、找边界情况。",
+    "en": "Try to break a piece of UI by feeding it worst-case data — long names, unbreakable emails, one-letter names, missing fields, huge counts, zero items, long labels, non-Latin text, emoji, extreme numbers — then render it behind a Demo data / Worst case toggle and report everything that broke, with the fix for each.",
+    "srcHash": "35cb3fc08d4e"
+  },
+  "character-asset-build": {
+    "zh": "角色资产建档。用一问一答的方式把人物形象拆成固定字段（定位/脸型/五官/皮肤/头发/耳部/体型/穿搭/配饰/习惯/声音），产出可长期复用的 AI 演员档案：档案.md + asset.json + 提示词.md + 三视图参考图位。当用户说「建档」「做人物资产」「AI 形象」「固定这个角色」「人物设定」时使用。",
+    "en": "Character asset profiling. A Q&A flow breaks a character into fixed fields (role, face shape, features, skin, hair, ears, body type, outfit, accessories, habits, voice) and produces a reusable AI-actor profile: profile.md + asset.json + prompt.md + a three-view reference slot. Use for build-a-profile, character asset, AI persona, lock this character, or creating a character across multiple videos.",
+    "srcHash": "48897b4c2593"
+  },
+  "character-design-prompt": {
+    "zh": "llmood 的角色设计生图规则。当用户要求生成角色立绘、人物设定图、全身角色图、OC 角色设计提示词，或提到「用角色设计规则」时使用。风格延展性强，开篇必须强调画风，白底全身单角色，可切换三视图 / 特写拼图。",
+    "en": "llmood's rules for generating character design images. Use for character standing art, character sheets, full-body character art, OC design prompts, or when the user says use the character design rules. Highly style-extensible; the art style must be stated up front; white background, full body, single character; can switch to three-view or close-up grids.",
+    "srcHash": "77da5ec2a0f6"
+  },
+  "chief-of-staff": {
+    "zh": "在一个会话里协调多个子 agent，共同推进一个长周期目标。",
+    "en": "Pursue a long-running goal in a single session by co-ordinating subagents.",
+    "srcHash": "a745c230d223"
+  },
+  "cinematic-terms": {
+    "zh": "电影摄影英文术语词典，700+ 条，按六类组织：机位与运镜、灯光、构图、镜头与胶片技术、风格调色与情绪、材质天气与姿态。当需要把画面意图翻译成精确的英文摄影术语，或查某个机位、运镜、布光、焦段、胶片质感、材质、天气、姿态的英文说法时使用。",
+    "en": "A 700+ entry English dictionary of cinematography terms in six groups: camera position and movement, lighting, composition, lens and film technique, style-grading and mood, material-weather and pose. Use when translating a visual intent into precise English cinematography terms, or looking up the English for a camera move, lighting setup, focal length, film texture, material, weather or pose.",
+    "srcHash": "21f98c462802"
+  },
+  "douyin-download": {
+    "zh": "下载抖音视频原片。当用户给出抖音分享链接、douyin.com 视频页地址、带 modal_id 的搜索页或视频 ID 并要求下载 / 保存视频时使用。本机有一个 WinForms 程序 DouyinDownloader.exe，双击可开窗口手动下载，也可带参数无界面下载。不用于其他平台，不用于批量抓取或采集他人主页。",
+    "en": "Downloads original Douyin videos. Use when the user gives a Douyin share link, a douyin.com video page, a search page with modal_id, or a video ID and asks to download or save it. Relies on a local WinForms app DouyinDownloader.exe — double-click for a GUI, or pass arguments for headless download. Not for other platforms, not for bulk scraping or harvesting other people's profiles.",
+    "srcHash": "7eaf37cb0314"
+  },
+  "film-styles": {
+    "zh": "51 种影片与插画风格提示词库，覆盖东方传统（水墨、浮世绘、皮影、剪纸、纸雕）、手绘与绘画（水彩、版画、木刻、厚涂、彩色玻璃）、复古与流行（装饰艺术、80 年代赛璐璐动画、橡皮管动画、丝网印、中途岛卡通、后室）、游戏与像素（像素 RPG、低多边形、微型游戏、科幻卡通）、信息与发布（数据叙事、蓝图、全息 HUD、拆解图、等距信息图）、电影感（无声电影、黑色电影式标题、窥视标题）。",
+    "en": "A library of 51 film and illustration style prompts covering Eastern tradition (ink wash, ukiyo-e, shadow puppetry, paper cut, paper sculpture), hand-drawn and painting (watercolor, woodcut print, engraving, impasto, stained glass), retro and pop (art deco, 80s cel animation, rubber hose animation, screen print, mid-century cartoon, backrooms), game and pixel (pixel RPG, low poly, micro game, sci-fi cartoon), information and editorial (data storytelling, blueprint, holographic HUD, exploded view, isometric infographic) and cinematic (silent film, film noir title, peeping title).",
+    "srcHash": "334a3f5c661b"
+  },
+  "find-skills": {
+    "zh": "帮用户发现并安装 agent skills。当用户问「怎么做 X」「有没有做 X 的技能」「有没有能……的技能」，或表达想扩展能力时使用。",
+    "en": "Helps users discover and install agent skills when they ask how do I do X, find a skill for X, is there a skill that can..., or express interest in extending capabilities.",
+    "srcHash": "ae20b48793b1"
+  },
+  "gpt-image-prompt": {
+    "zh": "为 GPT 出图（gpt-image / gpt-image-2 / ChatGPT 内置画图 / DALL·E）写图片提示词。核心是 OpenAI 官方四段式（背景场景 → 主体 → 关键细节 → 约束）、写明用途、写实就直写 photorealistic。不要用于 Midjourney（走 mj-prompt）、Krea 2 / Z-Image（走 krea2-zimage-prompt）、角色白底立绘与三视图（走 character-design-prompt）。",
+    "en": "Writes image prompts for GPT image models (gpt-image / gpt-image-2 / ChatGPT built-in drawing / DALL·E). Core is OpenAI's official four-part structure (scene → subject → key details → constraints); state the purpose; for realism just write photorealistic. Not for Midjourney (use mj-prompt), Krea 2 / Z-Image (use krea2-zimage-prompt), or white-background character art and three-views (use character-design-prompt).",
+    "srcHash": "bc0fe12c7e47"
+  },
+  "h3-consistency": {
+    "zh": "MiniMax H3 的人物占位与一致性规则：解决占位替身、换脸漂移、站位构图失控、多人调度错乱四类问题。当用户遇到人物在不同镜头里不一样、脸变了、衣服变了、站错位置、朝向反了、大小比例不对、多人对话谁左谁右搞错、背景人群被复制时使用。",
+    "en": "MiniMax H3 character placeholder and consistency rules, solving four problems: stand-in drift, face-swap drift, staging and composition loss of control, and multi-person scheduling chaos. Use when a character looks different across shots, the face or clothes change, someone stands in the wrong place, faces the wrong way or is the wrong scale, left and right in a dialogue is confused, or background crowds get duplicated.",
+    "srcHash": "43e38c9daf93"
+  },
+  "h3-jineng": {
+    "zh": "MiniMax H3 的垂直题材视频提示词模板库，15 个题材各自带完整的提示词结构、机位与灯光库、成品示例：电影级胶片、3D CGI、卡通动画、漫画分镜转视频、打戏与动作、动态设计广告、电商产品广告、动漫动作、产品 360 转盘、音乐视频、社交钩子、品牌叙事、时尚造型书、食品饮料、房地产建筑。",
+    "en": "A template library of vertical-genre video prompts for MiniMax H3 — 15 genres each with full prompt structure, camera and lighting libraries and finished examples: cinematic film, 3D CGI, cartoon animation, comic-to-video, fight and action, motion-design ads, e-commerce product ads, anime action, 360 product turntable, music video, social hook, brand narrative, fashion lookbook, food and drink, real estate and architecture.",
+    "srcHash": "f5f6c00d6824"
+  },
+  "hyperframes": {
+    "zh": "制作、编辑、做动画或渲染任何 HyperFrames 视频（HTML 渲染成视频）前先读这个。覆盖宣传片、讲解片、MV、图表、地图、竖版短片、标题卡、字幕和叠加层。包含渲染契约、工作循环，以及每类视频需要什么。",
+    "en": "Read first to make, edit, animate or render any video with HyperFrames (HTML rendered to video), including launch films, explainers, music videos, charts, maps, vertical clips, title cards, captions and overlays. Holds the render contract, the work loop and what each kind of video needs.",
+    "srcHash": "972bc2ee5871"
+  },
+  "hyperframes-cli": {
+    "zh": "HyperFrames 命令行：搭建项目、检查帧、编辑时间线、预览、渲染、分享和查看项目历史；可读取 JSON 并从失败中恢复。",
+    "en": "HyperFrames CLI — scaffold, check frames, edit timelines, preview, render, share and project history; read JSON and recover from failures.",
+    "srcHash": "a290c4ce95bb"
+  },
+  "hyperframes-registry": {
+    "zh": "约 450 个现成的 HyperFrames 区块与组件，作为可编辑源码安装——转场、叠加层、标题、动态字体、字幕、图表、地图叠加、3D、运镜。在手工实现任何具名视觉效果（CRT 扫描线、故障风、胶片颗粒、图表）之前先用它。",
+    "en": "About 450 ready-made HyperFrames blocks and components installed as editable source — transitions, overlays, titles, kinetic type, captions, charts, map overlays, 3D, camera moves. Use it before hand-building any named visual (CRT scanlines, glitch, film grain, a chart); also for hyperframes add and catalog.",
+    "srcHash": "d68f7ca64833"
+  },
+  "image-to-ui": {
+    "zh": "把图片、截图或设计稿还原成 1:1 的界面实现。以参考为准而不是重新设计，然后渲染出来与参考对比，修正可见差异。",
+    "en": "Recreate an image, screenshot or mockup as a 1:1 UI implementation. Match the reference rather than redesigning it, then render and compare the result to correct visible differences.",
+    "srcHash": "51acf91c031b"
+  },
+  "krea2-zimage-prompt": {
+    "zh": "为 Krea 2 与 Z-Image Turbo 写图片出图提示词——本机默认出图模型。两者都不吃 MJ 参数、都吃自然语言整句；Z-Image 无负面提示词字段（排除项写进正文），按「构图→主体/动作→环境→光线/色彩→风格→约束」六段写；Krea 2 纯自然语言、越详细越好、无参数后缀。",
+    "en": "Writes image prompts for Krea 2 and Z-Image Turbo — this machine's default image models. Both ignore Midjourney parameters and take full natural-language sentences; Z-Image has no negative-prompt field (write exclusions into the body); follow the six-part order composition → subject/action → environment → light/color → style → constraints. Krea 2 is pure natural language, more detail the better, no parameter suffix.",
+    "srcHash": "59e27e05f42d"
+  },
+  "mcp-security-audit": {
+    "zh": "审计 MCP（Model Context Protocol）服务器配置的安全问题。检查 .mcp.json 的风险、MCP 参数里的硬编码密钥或 Shell 注入、包运行器依赖是否锁定精确版本而非裸名 / @latest / 版本范围，以及可变的 npm/npx、bunx、pnpm dlx、yarn dlx、uvx、pipx run 等引用。",
+    "en": "Audit MCP (Model Context Protocol) server configurations for security issues. Reviews .mcp.json files, checks MCP server args for hardcoded secrets or shell injection, validates that package-runner dependencies use exact reviewed versions rather than bare names or @latest, and detects mutable npm/npx, bunx, pnpm dlx, yarn dlx, uvx and pipx run references.",
+    "srcHash": "76976b81432c"
+  },
+  "minimax-fashion-video": {
+    "zh": "llmood的电商鞋服视频提示词。当用户要求生成鞋 / 服装（鞋靴 / 上衣 / 裙 / 裤 / 外套 / 运动服等）带货、展示或使用场景视频提示词时使用。默认 10 秒竖屏，一次出两条（① 锁参考图场景展示 ② 按产品调性联想使用场景）。禁止查品类对照表、禁止默认街上走；必须硬切分镜，镜数按动作判断。",
+    "en": "Datong's e-commerce footwear and apparel video prompts. Use when asked for shoe or clothing product, display or usage-scene video prompts. Based on minimax, defaults to 10 seconds vertical, two videos per run (locked-to-reference scene, and a usage scene inferred from product tone). No category lookup tables, no default street walking; hard cuts required, shot count decided by action.",
+    "srcHash": "e1b3074707e9"
+  },
+  "minimax-jewelry-video": {
+    "zh": "llmood的电商首饰产品视频提示词规则。当用户要求生成首饰（项链 / 耳环 / 戒指 / 手链 / 手镯 / 吊坠等）带货或展示视频提示词时使用。基于 minimax 视频模型，自然段连续镜头格式（不用时间线），按佩戴部位分两套呈现模板（耳颈类 / 手腕手指类）。",
+    "en": "Datong's e-commerce jewelry video prompt rules. Use when asked for jewelry (necklace, earrings, ring, bracelet, bangle, pendant) product or display video prompts. Based on minimax, continuous natural-paragraph shot format (no timeline); two presentation templates split by wearing location (ear-neck vs wrist-finger).",
+    "srcHash": "fcecc802406a"
+  },
+  "minimax-lipsync-prompt": {
+    "zh": "为 MiniMax H3 / Hailuo 写数字人对口型分镜。三个画面分支：MV 唱歌、讲解口播、脱口秀。共用原音频、SRT、角色参考、dtmv:v1、六段式。当用户提到对口型、MV、Hailuo、dtmv、数字人、讲解、口播、脱口秀、坐凳固定机位时使用。",
+    "en": "Writes digital-human lip-sync storyboards for MiniMax H3 / Hailuo. Three branches: MV singing, presenter narration, stand-up. Shares original audio, SRT, character reference, dtmv:v1 and the six-part structure. Use for lip-sync, MV, Hailuo, dtmv, digital human, narration, talking head, stand-up or fixed seated camera.",
+    "srcHash": "eaa8e557272f"
+  },
+  "minimax-video-prompt": {
+    "zh": "llmood 的 MiniMax H3 视频提示词预设规则库。包含文生 / 图生 / 首尾帧 / 参考生四种模式、电商带货专版、动作迁移（角色替换）专版，以及音频参考的底层规则；另附声音设计库 80 条、表情微表情库 96 条、运镜库 120 条，以及 H3 台词与表演 8 条照抄模板。",
+    "en": "llmood's preset rule library for MiniMax H3 video prompts. Covers text-to-video, image-to-video, first-last-frame and reference-to-video modes, an e-commerce edition and a motion-transfer (character replacement) edition, plus underlying audio-reference rules. Includes an 80-entry sound design library, a 96-entry expression library, a 120-entry camera-move library and 8 copy-paste templates for H3 dialogue and performance.",
+    "srcHash": "dd960e81f8ab"
+  },
+  "mj-prompt": {
+    "zh": "为 Midjourney / niji 写出图提示词。不按画风锁分支：提示词文本按需求自由写（经验见 references），核心选择是结尾参数档案（p 值 / s 值后缀）。现有档案：夸张卡通（niji 7 + of28c14）、东方幻想水墨（raw + u9114gi）。",
+    "en": "Writes image prompts for Midjourney / niji. Style is not locked to a branch — the prompt text is written freely per request; the core choice is the trailing parameter profile (p / s suffix). Current profiles: exaggerated cartoon (niji 7 + of28c14) and Eastern fantasy ink (raw + u9114gi).",
+    "srcHash": "8f51fd2c2d71"
+  },
+  "mobile-native": {
+    "zh": "让网页在手机上像原生应用：那些区分「浏览器里的网站」和「装好的应用」的 CSS 与 meta 细节。涵盖 sticky hover、点击高亮闪屏、100vh 问题、输入框缩放页面、点击延迟、下拉刷新劫持滚动、刘海遮挡、长按选中按钮文字、反向滚动的轮播、状态栏错位等。",
+    "en": "Make a web app feel native on a phone — the small CSS and meta-tag fixes that separate a website in a browser from something that feels installed. Covers sticky hover states, tap highlight flashes, the 100vh bug, inputs that zoom the page, laggy taps, pull-to-refresh hijacking scroll, content under the notch, long-press selecting button text, carousels scrolling the wrong way and mismatched status bars.",
+    "srcHash": "d25e0f21d1de"
+  },
+  "neon-ai-gateway": {
+    "zh": "一个 API、一个凭证，通吃前沿与开源大模型和 embedding 模型，内建于你的 Neon 分支，由 Databricks 驱动。适用于调用 LLM、生成 embedding、给应用加 AI / 聊天 / agent、在多家模型提供商之间路由，或避免管理一堆独立密钥。",
+    "en": "One API and one credential for frontier and open-source LLMs and embedding models, built into your Neon branch and powered by Databricks. Use to call an LLM, generate embeddings, add AI/chat/agents to an app, route between providers (OpenAI, Anthropic, Google/Gemini, Meta, Alibaba and more), or avoid juggling separate provider keys.",
+    "srcHash": "2b81b922f366"
+  },
+  "neon-postgres": {
+    "zh": "在 Neon 上使用 Lakebase Postgres 的指南与最佳实践：连接方式、池化与直连、schema 迁移、分支（含仅 schema、从父重置、每个 PR 一个分支）、自动扩缩、缩容到零、即时恢复、只读副本、IP 白名单、逻辑复制、出网优化和 Lakebase 搜索。",
+    "en": "Guides and best practices for working with Lakebase Postgres on Neon: connections, pooled vs direct, schema migrations, branching (including schema-only, reset-from-parent and branch-per-PR), autoscaling, scale-to-zero, instant restore, read replicas, IP allow lists, logical replication, egress optimization and Lakebase Search.",
+    "srcHash": "6af0e47c82fc"
+  },
+  "prop-text-composite": {
+    "zh": "道具参考图需要出现文字或数字时使用——发票、收据、报销单、排产表、合同、工牌、流水单等。解决「出图后数字对不上、文字糊成一团」。流程固定：底图留白 → 生成文字贴片 → 量纸面四角 → 透视合成 → 只留成品。",
+    "en": "Use when a prop reference image needs visible text or numbers — invoices, receipts, expense forms, production schedules, contracts, ID badges, bank statements. Solves numbers coming out wrong and text turning into a mush. Fixed flow: leave blank space on the base image → generate a text patch → measure the paper's four corners → perspective composite → keep only the result.",
+    "srcHash": "c012845d63a1"
+  },
+  "remotion-render": {
+    "zh": "把 Remotion（React 组件）渲染导出成视频。",
+    "en": "Export a Remotion video — render React/Remotion component code into an MP4.",
+    "srcHash": "2d833fe9e1c8"
+  },
+  "seedance-20": {
+    "zh": "创建、改进或排查 Seedance 2.0 视频时使用，适用于 Dreamina、极梦、剪映、豆包、火山方舟、BytePlus、Runway 的 Seedance 通道以及第三方平台。涵盖文生 / 图生 / 视频生 / 参考生视频提示词、首尾帧、对话、对口型与音频、IP 安全改写、API、定价与模型 ID 问题，以及中 / 日 / 韩 / 西 / 俄语提示词。仅在用户明确要求 Seedance 时启用。",
+    "en": "Used when creating, improving or troubleshooting Seedance 2.0 video on any surface — Dreamina, Jimeng, CapCut, Doubao, Volcengine/Ark, BytePlus, Runway's Seedance route, fal, or third-party routers. Covers text/image/video/reference-to-video prompts, first-last frame, dialogue, lip-sync and audio, IP-safe rewrites, API, pricing and model-ID questions, and zh/ja/ko/es/ru prompt work. Activate only when the user asks for Seedance or names seedance-20.",
+    "srcHash": "2d4a28a92c4f"
+  },
+  "short-drama": {
+    "zh": "AI 短剧 / 漫剧 / 无限长视频的全流程创作技能集，11 个子技能：项目初始化、原著分析、改编开发、剧本编写、角色与场景道具资产、图片提示词、分镜、视频提示词、生产执行、剪辑、审查。当用户说要做短剧、漫剧、无限长视频、短视频或短电影时使用。",
+    "en": "A full-pipeline skill set for AI short drama, comic drama and infinite long video, with 11 sub-skills: project init, source analysis, adaptation, script writing, character and scene/prop assets, image prompts, storyboards, video prompts, production execution, editing and review. Use when the user wants to make a short drama, comic drama, long-form video, short video or short film.",
+    "srcHash": "71dcf08ae4e0"
+  },
+  "uizze-ui": {
+    "zh": "Uizze 官方的 UI/UX 构建与改进技能。结合你项目的代码和素材，用 uizze.com 上的真实 App 案例、设计系统、授权字体、图标和交互资源。",
+    "en": "The official Uizze skill for building and improving UI/UX. Works with your project's code and assets, and uses uizze.com for real app examples, design systems, licensed fonts, icons and interaction resources.",
+    "srcHash": "19638178a2bd"
+  },
+  "ultracave": {
+    "zh": "「穴居人」模式，极限压缩输出：碎片化、能一个字就不说一句、每个事实只说一次。只能用 /ultracave 或 /caveman ultra 手动开启，直到你说「stop caveman」或「normal mode」才恢复。",
+    "en": "Caveman at maximum compression: fragments, one word when one word is enough, each fact once. Invoke only with /ultracave or /caveman ultra. Stays on until stop caveman or normal mode.",
+    "srcHash": "0cf948bbc2c3"
+  },
+  "表情语气对话提示词": {
+    "zh": "为 AI 视频 / 配音模型写人物对话表演提示词。管「脸怎么动、声音怎么给、停顿在哪、镜头给谁」，输出带时间码、潜台词、角色状态和可投喂成品块。默认 15 秒、双人对白、普通话、2 级克制。不要用于纯运镜设计（走运镜与机位）、唱歌对口型（走 minimax-lipsync-prompt）、电商产品展示。",
+    "en": "Writes character dialogue performance prompts for AI video and voice models. Governs how the face moves, how the voice is delivered, where the pauses fall and who the camera is on; outputs timecodes, subtext, character state and drop-in ready blocks. Defaults: 15 seconds, two-person dialogue, Mandarin, restraint level 2. Not for pure camera-move design, singing lip-sync or e-commerce product display.",
+    "srcHash": "804b632dc3e4"
+  },
+  "豆包音频提示词": {
+    "zh": "把简单需求润色成火山引擎豆包音频生成（Seed-Audio 1.0）标准中文提示词。当用户要写语音 / 音频生成提示词、豆包音频、Seed-Audio、火山引擎文生音频、参考音频 / 参考图片提示词时使用。",
+    "en": "Polishes a simple request into a standard Chinese prompt for Volcengine Doubao audio generation (Seed-Audio 1.0). Use for voice or audio generation prompts, Doubao audio, Seed-Audio, Volcengine text-to-audio, reference-audio and reference-image prompts, or rewriting a prompt to the official structure.",
+    "srcHash": "5144e8847702"
+  },
+  "运镜与机位": {
+    "zh": "为 AI 电影 / 短视频写机位架设与运镜分镜。管「机位在哪、景别多大、镜头怎么动、镜头之间怎么接」，输出机位四坐标、运镜五要素、镜头组和可直接投喂 H3 / 通用视频模型的相机句。",
+    "en": "Writes camera placement and camera-move storyboards for AI film and short video. Governs where the camera is, how wide the shot is, how the lens moves and how shots cut together; outputs four camera coordinates, five camera-move elements, shot groups and camera sentences that can be fed directly to H3 or general video models.",
+    "srcHash": "7eef5ecd06df"
+  }
+}

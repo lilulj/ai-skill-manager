@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Skill Manager</title>
+  <script>
+    try {
+      var t = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="dot"></span>
+    <span class="brand-name">AI Skill Manager</span>
+    <span class="brand-sub" id="brandSub">加载中…</span>
+  </div>
+  <div class="topbar-actions">
+    <input id="search" class="search" type="search" data-i18n-ph="search.ph" placeholder="搜索技能名、描述…" autocomplete="off" />
+    <button id="btnCheck" class="btn btn-secondary" data-i18n="btn.check">检查更新</button>
+    <button id="btnUpdateAll" class="btn btn-primary" data-i18n="btn.updateAll" disabled>更新全部</button>
+    <span class="sep"></span>
+    <button id="btnDeps" class="btn btn-secondary" data-i18n="btn.deps">体检</button>
+    <button id="btnPresets" class="btn btn-secondary" data-i18n="btn.presets">套装</button>
+    <button id="btnBackups" class="btn btn-secondary" data-i18n="btn.backups">备份</button>
+    <button id="btnMarket" class="btn btn-secondary" data-i18n="btn.market">市场</button>
+    <button id="btnLogs" class="btn btn-secondary" data-i18n="btn.logs">日志</button>
+    <button id="btnDistribute" class="btn btn-secondary" data-i18n="btn.distribute">分发</button>
+    <button id="btnReconcile" class="btn btn-secondary" data-i18n="btn.reconcile">归位</button>
+    <span class="sep"></span>
+    <button id="btnLang" class="btn btn-ghost" title="切换介绍语言">中</button>
+    <button id="btnTheme" class="btn btn-ghost btn-icon" title="切换深色 / 浅色">☾</button>
+    <button id="btnSettings" class="btn btn-ghost btn-icon" title="设置">⚙</button>
+    <button id="btnRefresh" class="btn btn-ghost btn-icon" title="重新扫描">↻</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="side-title" data-i18n="side.scope">作用域</div>
+    <ul id="scopeList" class="cat-list"></ul>
+    <button id="btnAddProject" class="side-add" data-i18n="side.addProject">+ 添加项目</button>
+
+    <div class="side-title" data-i18n="side.categories">分类</div>
+    <ul id="catList" class="cat-list"></ul>
+
+    <div class="side-title" data-i18n="side.views">视图</div>
+    <label class="side-toggle">
+      <input type="checkbox" id="showDisabled" />
+      <span data-i18n="side.showDisabled">显示已禁用</span>
+    </label>
+    <label class="side-toggle">
+      <input type="checkbox" id="onlyBroken" />
+      <span data-i18n="side.onlyBroken">只看有问题的</span>
+    </label>
+    <div class="side-footer" id="sideFooter"></div>
+  </aside>
+
+  <main class="main">
+    <div id="banner" class="banner hidden"></div>
+    <div id="grid" class="grid"></div>
+    <div id="empty" class="empty hidden" data-i18n="msg.empty">没有匹配的技能</div>
+  </main>
+
+  <aside class="detail" id="detail">
+    <div class="detail-empty" id="detailEmpty">
+      <div class="detail-empty-icon">◇</div>
+      <p data-i18n="detail.empty">选一个技能查看详情</p>
+    </div>
+    <div class="detail-body hidden" id="detailBody">
+      <div class="detail-head">
+        <h2 id="dName"></h2>
+        <span id="dBadge" class="badge"></span>
+      </div>
+      <p class="detail-desc" id="dDesc"></p>
+      <div class="trans-stale hidden" id="dStale" data-i18n="detail.staleTrans">⚠ 这条译文基于旧版原文，原文已改动，译文可能过时</div>
+
+      <div class="kv"><span data-i18n="detail.category">分类</span><b id="dCat"></b></div>
+      <div class="kv"><span data-i18n="detail.source">来源</span><b id="dSource"></b></div>
+      <div class="kv"><span id="dUpdateLabel">更新状态</span><b id="dUpdate"></b></div>
+      <div class="kv hidden" id="dCliRow"><span data-i18n="detail.cli">依赖 CLI</span><b id="dCli"></b></div>
+      <div class="kv"><span data-i18n="detail.status">状态</span><b id="dStatus"></b></div>
+      <div class="kv"><span data-i18n="detail.size">大小</span><b id="dSize"></b></div>
+      <div class="kv"><span data-i18n="detail.path">路径</span><b class="mono break" id="dPath"></b></div>
+
+      <div class="detail-alert hidden" id="dAlert"></div>
+
+      <div class="detail-actions">
+        <button id="btnToggle" class="btn btn-secondary" data-i18n="detail.disable">禁用</button>
+        <button id="btnPreview" class="btn btn-ghost hidden" data-i18n="detail.preview">预览</button>
+        <button id="btnUpdateOne" class="btn btn-primary hidden">更新</button>
+        <button id="btnFix" class="btn btn-ghost hidden" data-i18n="detail.fix">修复</button>
+        <button id="btnEdit" class="btn btn-ghost" data-i18n="detail.edit">编辑</button>
+        <button id="btnOpen" class="btn btn-ghost" data-i18n="detail.folder">目录</button>
+        <button id="btnUninstall" class="btn btn-danger" data-i18n="detail.uninstall">卸载</button>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<div id="overlay" class="overlay hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modalTitle"></h3>
+      <button id="modalClose" class="btn btn-ghost btn-icon">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot" id="modalFoot"></div>
+  </div>
+</div>
+
+<div id="log" class="log"></div>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

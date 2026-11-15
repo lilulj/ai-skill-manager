@@ -1,0 +1,63 @@
+{
+  "name": "ai-skill-manager",
+  "version": "1.0.0",
+  "description": "Manage local Agent Skills for Claude Code, Codex, Cursor and other AI coding tools. Desktop app.",
+  "main": "main.js",
+  "author": "llmood",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "claude-code",
+    "codex",
+    "cursor",
+    "skill-manager",
+    "electron"
+  ],
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder --win nsis",
+    "build:dir": "electron-builder --dir"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "build": {
+    "appId": "cn.llmood.skillsmanager",
+    "productName": "AI Skill Manager",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "i18n/**/*",
+      "icon.ico",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "AI Skill Manager",
+      "artifactName": "${productName}-${version}-setup.${ext}"
+    }
+  }
+}

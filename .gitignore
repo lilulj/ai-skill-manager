@@ -1,0 +1,21 @@
+node_modules/
+dist/
+build/
+out/
+
+# 开发截图
+shot-*.png
+icon-1024.png
+
+# 本机专用脚本（路径写死在作者机器上）
+tools/
+make-shortcut.ps1
+
+# 运行时数据
+backups/
+*.log
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
