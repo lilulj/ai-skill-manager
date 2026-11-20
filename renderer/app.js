@@ -847,7 +847,7 @@ async function showBackups() {
   const dirLabel = (s0 && s0.backupDir) ? s0.backupDir : ((s0 && s0.dataDir) || '') + '\\backups';
   const rows = list.map((b) => `
     <tr>
-      <td class="mono">${esc(b.ts)}</td>
+      <td class="mono">${esc(fmtBackupTs(b.ts))}</td>
       <td>${esc(b.label || '—')}</td>
       <td>${b.count} 个</td>
       <td>${b.sizeKb} KB</td>
@@ -1061,7 +1061,7 @@ async function showLogs() {
     ? lines.map((l) => {
       const m = l.match(/^\[(.+?)\]\s+(\S+)\s*(.*)$/);
       if (!m) return `<div class="log-line"><span class="t"></span><span class="a"></span><span>${esc(l)}</span></div>`;
-      const t = m[1].replace('T', ' ').replace('Z', '').slice(0, 19);
+      const t = fmtLocal(new Date(m[1]));
       return `<div class="log-line"><span class="t">${esc(t)}</span><span class="a">${esc(m[2])}</span><span>${esc(m[3])}</span></div>`;
     }).join('')
     : '<div class="loading">还没有操作记录</div>';
@@ -1653,12 +1653,29 @@ function fmtSize(kb) {
   return kb + ' KB';
 }
 
+function pad2(n) { return String(n).padStart(2, '0'); }
+
+function fmtLocal(d) {
+  if (!(d instanceof Date) || isNaN(d.getTime())) return '—';
+  return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())} ` +
+    `${pad2(d.getHours())}:${pad2(d.getMinutes())}:${pad2(d.getSeconds())}`;
+}
+
+/* 备份目录名是 UTC：2026-11-15T08-09-33-000Z */
+function fmtBackupTs(ts) {
+  const m = String(ts).match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z$/);
+  if (!m) return ts;
+  return fmtLocal(new Date(Date.UTC(
+    +m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6], +m[7]
+  )));
+}
+
 function fmtTime(iso) {
   if (!iso) return '—';
   const d = new Date(iso);
   if (isNaN(d.getTime())) return '—';
   const days = Math.floor((Date.now() - d.getTime()) / 86400000);
-  const s = d.toISOString().slice(0, 10);
+  const s = `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
   if (days <= 0) return s + '（今天）';
   if (days === 1) return s + '（昨天）';
   return s + `（${days} 天前）`;

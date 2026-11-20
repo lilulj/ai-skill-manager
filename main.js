@@ -2058,6 +2058,14 @@ function createWindow() {
         img = await mainWindow.webContents.capturePage();
         fs.writeFileSync(path.join(shotDir, 'shot-backup-new.png'), img.toPNG());
 
+        await mainWindow.webContents.executeJavaScript("closeModal(); showLogs()");
+        await new Promise((r) => setTimeout(r, 1500));
+        const logTitle = await mainWindow.webContents.executeJavaScript(
+          "document.getElementById('modalTitle').textContent + ' | rows=' + document.querySelectorAll('.log-line').length");
+        console.log('LOG_PANEL=' + logTitle);
+        img = await mainWindow.webContents.capturePage();
+        fs.writeFileSync(path.join(shotDir, 'shot-logs.png'), img.toPNG());
+
         await mainWindow.webContents.executeJavaScript("closeModal()");
         console.log('SHOT_SAVED');
       } catch (e) { console.error('SHOT_FAIL', e.message); }
